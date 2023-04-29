@@ -13,7 +13,7 @@ import {
 } from "chart.js";
 import { Line, Bar } from "react-chartjs-2";
 
-import { MainDataType, DailyDataType } from "../../Types/covidDataType";
+import { MainDataType, DailyDataType, BuiltDaylyDataType, ChartPropsType } from "../../Types/covidDataType";
 import {fetchDailyData} from "../../Services/API";
 
 
@@ -29,16 +29,6 @@ ChartJS.register(
   Filler
 );
 
-type ChartPropsType = {
-  data: MainDataType;
-  country: string;
-};
-
-type BuiltDaylyDataType = {
-  dateLabels: Array<string>;
-  casesLine: Array<number>;
-  deathsLine: Array<number>;
-};
 
 const Chart = ({ data: { cases, recovered, deaths }, country }: ChartPropsType) => {
   const [dailyData, setDailyData] = useState<BuiltDaylyDataType>({

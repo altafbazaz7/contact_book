@@ -11,6 +11,18 @@ export interface ICovidData {
     }
 
 
+    export type ChartPropsType = {
+      data: MainDataType;
+      country: string;
+    };
+    
+    export type BuiltDaylyDataType = {
+      dateLabels: Array<string>;
+      casesLine: Array<number>;
+      deathsLine: Array<number>;
+    };
+    
+
     
 
     export interface MapProps  {
