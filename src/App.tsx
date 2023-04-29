@@ -1,26 +1,25 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { Routes, Route } from "react-router-dom";
+import AddNewContact from "./Pages/Contacts/AddContact";
+import AllContacts from "./Pages/Contacts/AllContacts";
+import { QueryClient, QueryClientProvider } from 'react-query';
+import CovidMap from "./Pages/Dashboard/MapAndChart";
+import Sidebar from "./components/Sidebar/Sidebar";
 
-function App() {
+const queryClient = new QueryClient();
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <QueryClientProvider client={queryClient}>
+      <Sidebar/>
+      <Routes>
+        <Route path="/" element={<AllContacts />} />
+        <Route path="/addcontact" element={<AddNewContact />} />
+        <Route path="/covidmap" element={<CovidMap />} />
+
+      </Routes>
+    </QueryClientProvider>
   );
-}
+};
 
 export default App;
